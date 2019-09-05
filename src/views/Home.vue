@@ -7,6 +7,15 @@
       <p>{{ msg }}-{{ num }}</p>
       <button @click="handleClick">点击切换消息值</button>
     </div>
+    <hr>
+    <div>
+      <h2>1、vuex初体验</h2>
+      <p>{{ count }}</p>
+      <div>
+        <button @click="add">+</button>
+        <button @click="reduce">-</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -30,11 +39,20 @@ export default {
   computed: {
     msg() {
       return this.store.states.msg
+    },
+    count() {
+      return this.$store.state.count;
     }
   },
   methods: {
     handleClick() {
       this.store.commit('setMsg', 'Hello World!')
+    },
+    add() {
+      this.$store.commit('add');
+    },
+    reduce() {
+      this.$store.commit('reduce');
     }
   }
 }
