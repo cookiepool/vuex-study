@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import SimpleStore from './views/simple_store/SimpleParent';
 import FirstExp from './views/first_exp/FirstExp.vue';
 import MapState from './views/mapstate/MapState.vue';
+import Getter from './views/getter/Getter.vue';
 
 Vue.use(Router)
 
@@ -25,6 +26,11 @@ export default new Router({
           path: '/home/mapstate',
           name: 'mapstate',
           component: MapState
+        },
+        {
+          path: '/home/getter',
+          name: 'getter',
+          component: Getter
         }
       ]
     },
