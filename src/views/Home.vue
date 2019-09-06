@@ -5,6 +5,7 @@
       <li :class="{'list-item': true, 'active': idx === 1}" @click="changeTab(1)">vuex初体验</li>
       <li :class="{'list-item': true, 'active': idx === 2}" @click="changeTab(2)">mapstate</li>
       <li :class="{'list-item': true, 'active': idx === 3}" @click="changeTab(3)">getter</li>
+      <li :class="{'list-item': true, 'active': idx === 4}" @click="changeTab(4)">mapgetters</li>
     </ul>
     <router-view></router-view>
   </div>
@@ -36,6 +37,9 @@ export default {
           break;
         case 3:
           this.$router.push('/home/getter');
+          break;
+        case 4:
+          this.$router.push('/home/mapgetters');
           break;
         default:
           this.$router.push('/simplestore');
