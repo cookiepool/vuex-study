@@ -1,59 +1,67 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld :commonStates="store" msg="Welcome to Your Vue.js App"/>
-    <hr>
-    <div class="wrap">
-      <p>{{ msg }}-{{ num }}</p>
-      <button @click="handleClick">点击切换消息值</button>
-    </div>
-    <hr>
-    <div>
-      <h2>1、vuex初体验</h2>
-      <p>{{ count }}</p>
-      <div>
-        <button @click="add">+</button>
-        <button @click="reduce">-</button>
-      </div>
-    </div>
+    <ul class="menu-list">
+      <li :class="{'list-item': true, 'active': idx === 1}" @click="changeTab(1)">vuex初体验</li>
+      <li :class="{'list-item': true, 'active': idx === 2}" @click="changeTab(2)">mapstate</li>
+      <li :class="{'list-item': true, 'active': idx === 3}" @click="changeTab(3)">getter</li>
+    </ul>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-import storeObj from '../simple_store.js';
+
 
 export default {
   name: 'home',
   data() {
-    const store = new storeObj(this);
     return {
-      store,
-      num: 23
+      idx: 1
     }
-  },
-  components: {
-    HelloWorld
   },
   computed: {
-    msg() {
-      return this.store.states.msg
-    },
-    count() {
-      return this.$store.state.count;
-    }
+
   },
-  methods: {
-    handleClick() {
-      this.store.commit('setMsg', 'Hello World!')
-    },
-    add() {
-      this.$store.commit('add');
-    },
-    reduce() {
-      this.$store.commit('reduce');
+  methods: { 
+    changeTab(idx) {
+      this.idx = idx;
+      switch(idx) {
+        case 1: 
+          this.$router.push('/home/firstexp');
+          break;
+        case 2:
+          this.$router.push('/home/mapstate');
+          break;
+        case 3:
+          this.$router.push('/home/getter');
+          break;
+        default:
+          this.$router.push('/simplestore');
+      }
     }
   }
 }
 </script>
+
+<style>
+  ul {
+    list-style-type: none;
+  }
+  .menu-list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid #f1f1f1;
+  }
+  .list-item {
+    margin-right: 12px;
+    cursor: pointer;
+    line-height: 36px;
+  }
+  .list-item.active {
+    color: palegreen;
+    border-bottom: 2px solid palegreen;
+  }
+</style>

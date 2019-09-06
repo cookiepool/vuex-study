@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import SimpleStore from './views/simple_store/SimpleParent';
+import FirstExp from './views/first_exp/FirstExp.vue';
+import MapState from './views/mapstate/MapState.vue';
 
 Vue.use(Router)
 
@@ -9,17 +12,26 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
+      path: '/home',
       name: 'home',
-      component: Home
+      component: Home,
+      children: [
+        {
+          path: '/home/firstexp',
+          name: 'firstexp',
+          component: FirstExp
+        },
+        {
+          path: '/home/mapstate',
+          name: 'mapstate',
+          component: MapState
+        }
+      ]
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      path: '/simplestore',
+      name: 'simplestore',
+      component: SimpleStore
     }
   ]
 })

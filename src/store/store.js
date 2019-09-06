@@ -5,7 +5,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    count: 0
+    msg: 'Hello!',
+    count: 10,
+    firstName: 'lee',
+    lastName: 'hao',
+    age: 26
   },
   mutations: {
     add() {
