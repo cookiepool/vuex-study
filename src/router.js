@@ -7,6 +7,7 @@ import MapState from './views/mapstate/MapState.vue';
 import Getter from './views/getter/Getter.vue';
 import MapGetters from './views/mapgetters/MapGetter.vue';
 import Mutation from './views/mutation/Mutation.vue';
+import Action from './views/action/Action.vue';
 
 Vue.use(Router)
 
@@ -47,6 +48,11 @@ export default new Router({
           path: '/home/mutation',
           name: 'mutation',
           component: Mutation
+        },
+        {
+          path: '/home/action',
+          name: 'action',
+          component: Action
         }
       ]
     },

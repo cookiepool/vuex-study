@@ -11,6 +11,12 @@ export default new Vuex.Store({
     lastName: 'hao',
     list: [1, 2, 3, 4, 5, 6, 7, 8],
     
+    product: 'car', // 这个变量用来测试action
+
+    userInfo: { // 这个变量用来测试组合变量
+      name: 'lee',
+      age: 23
+    }
   },
   mutations: {
     add(state) {
@@ -27,6 +33,14 @@ export default new Vuex.Store({
       // 这种写法用新对象替换老对象
       // state= {...state, newProp: '添加一个新值！'} // 这个玩意儿不管用了，用下面的replaceState()方法
       this.replaceState({...state, newProp: '添加一个新值！'})
+    },
+    // 以下mutation方法用来测试action
+    changeProduct(state, payload) {
+      state.product = payload.change;
+    },
+    // 以下用来测试组合action
+    changeInfo(state, payload) {
+      state.userInfo.name = 'lee haha';
     }
   },
   getters: {
@@ -40,6 +54,27 @@ export default new Vuex.Store({
     }
   },
   actions: {
-
+    changeProduct(context, payload) { // 这个context是一个与 store 实例具有相同方法和属性的对象
+      // 调用mutation里的changeProduct方法
+      // context.commit('changeProduct', {change: 'ship'});
+      // 改成异步方式
+      // setTimeout(() => {
+      //   context.commit('changeProduct', {change: 'ship'});
+      // }, 1500)
+      // 使用载荷
+      let temp = 'ship+' + payload.extraInfo; 
+      setTimeout(() => {
+        context.commit('changeProduct', {change: temp});
+      }, 1500)
+    },
+    changeInfo(context, payload) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          context.commit('changeInfo');
+          resolve();
+        }, 2000)
+      })
+    },
+    
   }
 })

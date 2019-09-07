@@ -7,6 +7,7 @@
       <li :class="{'list-item': true, 'active': idx === 3}" @click="changeTab(3)">getter</li>
       <li :class="{'list-item': true, 'active': idx === 4}" @click="changeTab(4)">mapgetters</li>
       <li :class="{'list-item': true, 'active': idx === 5}" @click="changeTab(5)">mutation</li>
+      <li :class="{'list-item': true, 'active': idx === 6}" @click="changeTab(6)">action</li>
     </ul>
     <router-view></router-view>
   </div>
@@ -44,6 +45,9 @@ export default {
           break;
         case 5:
           this.$router.push('/home/mutation');
+          break;
+        case 6:
+          this.$router.push('/home/action');
           break;
         default:
           this.$router.push('/simplestore');
