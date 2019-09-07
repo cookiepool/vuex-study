@@ -9,15 +9,24 @@ export default new Vuex.Store({
     count: 10,
     firstName: 'lee',
     lastName: 'hao',
-    age: 26,
-    list: [1, 2, 3, 4, 5, 6, 7, 8]
+    list: [1, 2, 3, 4, 5, 6, 7, 8],
+    
   },
   mutations: {
-    add() {
-      this.state.count++;
+    add(state) {
+      state.count++;
     },
-    reduce() {
-      this.state.count--;
+    reduce(state) {
+      state.count--;
+    }, 
+    loadAdd(state, payload) {  // 提交载荷，额外参数
+      state.count += payload;
+    },
+    addNewState(state, payload) { // 我打算再这儿添加新的属性到state
+      // Vue.set(state, 'newProp', '添加一个新值！'); // 这是一种写法
+      // 这种写法用新对象替换老对象
+      // state= {...state, newProp: '添加一个新值！'} // 这个玩意儿不管用了，用下面的replaceState()方法
+      this.replaceState({...state, newProp: '添加一个新值！'})
     }
   },
   getters: {
