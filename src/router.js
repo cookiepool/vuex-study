@@ -8,6 +8,7 @@ import Getter from './views/getter/Getter.vue';
 import MapGetters from './views/mapgetters/MapGetter.vue';
 import Mutation from './views/mutation/Mutation.vue';
 import Action from './views/action/Action.vue';
+import Module from './views/module/Module.vue';
 
 Vue.use(Router)
 
@@ -53,6 +54,11 @@ export default new Router({
           path: '/home/action',
           name: 'action',
           component: Action
+        },
+        {
+          path: '/home/module',
+          name: 'module',
+          component: Module
         }
       ]
     },

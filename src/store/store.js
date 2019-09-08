@@ -3,7 +3,49 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+// 定义的模块A
+const moduleA = {
+  state: {
+    name: 'lee',
+    age: 23,
+  },
+  mutations: {
+
+  },
+  getters: {
+
+  },
+  actions: {
+
+  }
+};
+
+// 定义模块B
+const moduleB = {
+  state: {
+    name: 'wang',
+    age: 22,
+    desc: 'nope'
+  },
+  mutations: {
+    modifyDesc(state, payload) {
+      state.desc = payload.newMsg;
+    }
+  },
+  getters: {
+
+  },
+  actions: {
+
+  }
+}
+
+
 export default new Vuex.Store({
+  modules: {
+    ma: moduleA,
+    mb: moduleB
+  },
   state: {
     msg: 'Hello!',
     count: 10,
@@ -13,10 +55,10 @@ export default new Vuex.Store({
     
     product: 'car', // 这个变量用来测试action
 
-    userInfo: { // 这个变量用来测试组合变量
+    userInfo: { // 这个变量用来测试组合action
       name: 'lee',
       age: 23
-    }
+    },
   },
   mutations: {
     add(state) {
