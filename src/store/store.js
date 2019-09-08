@@ -50,7 +50,7 @@ export default new Vuex.Store({
     msg: 'Hello!',
     count: 10,
     firstName: 'lee',
-    lastName: 'hao',
+    lastName: 'haha',
     list: [1, 2, 3, 4, 5, 6, 7, 8],
     
     product: 'car', // 这个变量用来测试action
