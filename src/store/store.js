@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import { moduleC } from './module_c.js';
+
 Vue.use(Vuex)
 
 // 定义的模块A
@@ -44,7 +46,8 @@ const moduleB = {
 export default new Vuex.Store({
   modules: {
     ma: moduleA,
-    mb: moduleB
+    mb: moduleB,
+    mc: moduleC
   },
   state: {
     msg: 'Hello!',
@@ -91,8 +94,8 @@ export default new Vuex.Store({
         return item % 2 == 0;
       })
     },
-    getLength(state, getter) { // 方法里面传getter
-      return getter.modifyArr.length;
+    getLength(state, getters) { // 方法里面传getter
+      return getters.modifyArr.length;
     }
   },
   actions: {

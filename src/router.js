@@ -9,6 +9,7 @@ import MapGetters from './views/mapgetters/MapGetter.vue';
 import Mutation from './views/mutation/Mutation.vue';
 import Action from './views/action/Action.vue';
 import Module from './views/module/Module.vue';
+import Namespace from './views/module/NameSpace.vue';
 
 Vue.use(Router)
 
@@ -18,7 +19,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/home'
+      redirect: '/home/firstexp'
     },
     {
       path: '/home',
@@ -59,6 +60,11 @@ export default new Router({
           path: '/home/module',
           name: 'module',
           component: Module
+        },
+        {
+          path: '/home/namespace',
+          name: 'namespace',
+          component: Namespace
         }
       ]
     },

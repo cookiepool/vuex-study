@@ -9,6 +9,7 @@
       <li :class="{'list-item': true, 'active': idx === 5}" @click="changeTab(5)">mutation</li>
       <li :class="{'list-item': true, 'active': idx === 6}" @click="changeTab(6)">action</li>
       <li :class="{'list-item': true, 'active': idx === 7}" @click="changeTab(7)">module</li>
+      <li :class="{'list-item': true, 'active': idx === 8}" @click="changeTab(8)">module_namespace</li>
     </ul>
     <router-view></router-view>
   </div>
@@ -52,6 +53,9 @@ export default {
           break;
         case 7:
           this.$router.push('/home/module');
+          break;
+        case 8:
+          this.$router.push('/home/namespace');
           break;
         default:
           this.$router.push('/simplestore');
